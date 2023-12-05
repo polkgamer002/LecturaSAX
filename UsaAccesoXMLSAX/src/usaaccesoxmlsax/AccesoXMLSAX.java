@@ -13,19 +13,22 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 public class AccesoXMLSAX {
-
+    //Crea una variable tipo SAXParser llamada parser
     SAXParser parser;
 
     public int parsearXMLconLibrosSAXhandler(File f) {
         try {
+            //Crea una nueva instancia SAXParserFactory que hace instancias SAXParser
             SAXParserFactory factory = SAXParserFactory.newInstance();
             parser = factory.newSAXParser();
+            //Crea una nueva instancia LibrosSAXhandler la cual es la otra 
+            //clase para manejar los eventos SAX
             LibrosSAXhandler sh = new LibrosSAXhandler();
             parser.parse(f, sh);
-            return 0;
+            return 0;//Si el parser funciona
         } catch (Exception e) {
             e.printStackTrace();
-            return -1;
+            return -1;//Si el parser falla
         }
     }
 }
